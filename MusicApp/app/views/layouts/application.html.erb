@@ -10,10 +10,12 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class="ui container">
+  <body>
+  <div class="ui container">
     <header class="header__container">
       <div class="header__logo">
-        <h1>Music App</h1>  
+        <h1><%= link_to 'Music App', bands_url %></h1>  
+        
       </div>
 
       <div class="header__nav">
@@ -41,5 +43,6 @@
     <footer class="footer">
       
     </footer>
+  </div>
   </body>
 </html>

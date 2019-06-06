@@ -1,0 +1,14 @@
+<h2>Add new band</h2>
+<br><br>
+
+<form action="<%= bands_url %>" method="POST" class="ui form">
+  <%= form_auth %>
+
+  <label>Band name: 
+    <input type="text" name="band[name]">
+  </label>
+
+  <br><br>
+
+  <input type="submit" value="Add band" class="ui button green">
+</form>

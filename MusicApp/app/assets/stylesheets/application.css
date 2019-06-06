@@ -14,12 +14,26 @@
  *= require_self
  */
 
+body {
+  background-color: #F6F8FF;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: .5rem;
+  padding-bottom: .5rem;
+}
+
 
 .header__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  padding-top: 2rem;
 }
 
 .header__logo {
@@ -36,4 +50,16 @@
   margin-bottom: 0;
   margin-right: 1rem;
   padding-bottom: 0;
+}
+
+.subheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subheader__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

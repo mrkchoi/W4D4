@@ -1,0 +1,14 @@
+<div class="subheader">
+  <h2><%= @band.name %></h2>
+
+  <div class="subheader__nav">
+    <a href="<%= edit_band_url %>" class="ui button">Edit band</a>
+    <form action="<%= band_url(@band) %>" method="POST" class="ui form">
+      <%= form_auth %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete band" class="ui button red">
+  </form>
+  </div>
+</div>
+
+
