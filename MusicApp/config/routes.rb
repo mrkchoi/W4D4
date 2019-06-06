@@ -6,9 +6,23 @@ Rails.application.routes.draw do
     resources :albums, only: [:new]
   end
 
-  resources :albums, except: [:new]
+  resources :albums, except: [:new] do
+    resources :tracks, only: [:new]
+  end
+
+  resources :tracks, except: [:new, :index]
 
 end
+
+
+
+# new_album_track GET    /albums/:album_id/tracks/new(.:format) tracks#new
+#          tracks POST   /tracks(.:format)                      tracks#create
+#      edit_track GET    /tracks/:id/edit(.:format)             tracks#edit
+#           track GET    /tracks/:id(.:format)                  tracks#show
+#                 PATCH  /tracks/:id(.:format)                  tracks#update
+#                 PUT    /tracks/:id(.:format)                  tracks#update
+#                 DELETE /tracks/:id(.:format)                  tracks#destroy
 
 
 

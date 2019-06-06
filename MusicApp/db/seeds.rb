@@ -10,6 +10,7 @@
 
 
 ActiveRecord::Base.transaction do
+  Track.destroy_all
   Album.destroy_all
   Band.destroy_all
   User.destroy_all
@@ -43,6 +44,21 @@ ActiveRecord::Base.transaction do
     Album.create(title: Faker::Music.album, year: Faker::Number.between(1955, 2019), studio_album: ['t','f'].sample, band_id: (0..num_bands).to_a.sample)
   end
 
+  ################################### 
+  # CREATE TRACKS
+  ################################### 
+  num_albums = Album.all.count
 
+  (0...num_albums).each do |album_idx|
+    (0..12).each do |track_num|
+      Track.create(
+        title: Faker::Hipster.word.capitalize, 
+        album_id: Album.all[album_idx].id, 
+        lyrics: Faker::Quote.famous_last_words, 
+        track_type: ["Regular", "Bonus"].sample, 
+        ord: track_num + 1
+      )
+    end
+  end
 
 end
