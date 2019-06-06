@@ -5,13 +5,22 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user][:email], params[:user][:password])
+    @user = User.new(email: params[:user][:email], password: params[:user][:password])
 
     if @user.save
-      
+      # redirect to homepage
+      # login user (set as current_user)
+
+      login!(@user)
+      render :show
     else
-      
+      # render sign up page
+      render :new
     end
+  end
+
+  def show
+    render :show
   end
 
   private
