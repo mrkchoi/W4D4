@@ -1,5 +1,17 @@
 <h2>Edit band info</h2>
 
+<div class="error__container">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <div class="ui warning message">
+        <%= error %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<br>
+
 <form action="<%= band_url %>" method="POST" class="ui form">
   <input type="hidden" name="_method" value="PATCH">
   <%= form_auth %>

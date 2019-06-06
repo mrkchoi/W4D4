@@ -1,6 +1,18 @@
 <h2>New album</h2>
 <h3><%= @bands.find_by(id: params[:band_id]).name %></h3>
 
+<div class="error__container">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <div class="ui warning message">
+        <%= error %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<br>
+
 <form action="<%= albums_url %>" method="POST" class="ui form">
   <%= form_auth %>
 

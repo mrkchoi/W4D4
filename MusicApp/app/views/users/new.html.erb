@@ -1,5 +1,16 @@
 <h2>Sign Up</h2>
 
+<div class="error__container">
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <div class="ui warning message">
+        <%= error %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<br>
 
 <form action="<%= users_url %>" method="POST" class="ui form">
   <%= form_auth %>

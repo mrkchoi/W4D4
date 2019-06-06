@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
 
     if @user
       login!(@user)
-      redirect_to new_user_url
+      redirect_to bands_url
     else
+      flash.now[:errors] = ["Email/password not valid"]
       render :new
     end
   end

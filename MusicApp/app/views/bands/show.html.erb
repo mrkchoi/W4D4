@@ -7,9 +7,24 @@
     <form action="<%= band_url(@band) %>" method="POST" class="ui form">
       <%= form_auth %>
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete band" class="ui button red">
+      <input type="submit" value="Delete band" class="ui button red basic">
   </form>
   </div>
+
+</div>
+
+<div class="band-albums__main">
+  <ul>
+    <% if @band.albums %>
+      <% @band.albums.each do |album| %>
+
+      <li>
+        <a href="<%= album_url(album) %>"><%= album.title %></a>
+      </li>
+
+      <% end %>
+    <% end %>
+  </ul>
 </div>
 
 

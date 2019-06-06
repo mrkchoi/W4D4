@@ -10,11 +10,13 @@
 
 
 ActiveRecord::Base.transaction do
+  Album.destroy_all
+  Band.destroy_all
+  User.destroy_all
 
   ################################### 
   # CREATE USERS
   ################################### 
-  User.destroy_all
 
 
   User.create(email: "mrkchoi@gmail.com", password: 'password')
@@ -30,5 +32,17 @@ ActiveRecord::Base.transaction do
   20.times do
     Band.create(name: Faker::Music.band)
   end
+
+
+  ################################### 
+  # CREATE ALBUMS
+  ################################### 
+  num_bands = Band.all.count - 1
+
+  100.times do
+    Album.create(title: Faker::Music.album, year: Faker::Number.between(1955, 2019), studio_album: ['t','f'].sample, band_id: (0..num_bands).to_a.sample)
+  end
+
+
 
 end

@@ -1,6 +1,24 @@
-<h2>Album page</h2>
 
-<h3></h3>
+<div class="subheader">
+  <h2>
+    <a href="<%= band_url(@band) %>"><%= @band.name %></a>
+  </h2>
+
+  <div class="subheader__nav">
+    <a href="<%= new_band_album_url(@band) %>" class="ui button">+ Add track</a>
+    <a href="<%= edit_album_url %>" class="ui button">Edit album details</a>
+    <form action="<%= album_url(@album) %>" method="POST" class="ui form">
+      <%= form_auth %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete album" class="ui button red basic">
+  </form>
+  </div>
+
+</div>
+
+<h3><%= @album.title %></h3>
+
 <ul>
-  <li></li>
+  <li>Year: <%= @album.year %></li>
+  <li>Album type: <%= @album.studio_album == 't' ? 'Studio' : 'Live' %></li>
 </ul>
