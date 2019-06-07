@@ -5,7 +5,7 @@
   </h2>
 
   <div class="subheader__nav">
-    <a href="<%= new_band_album_url(@band) %>" class="ui button">+ Add track</a>
+    <a href="<%= new_album_track_url(@album) %>" class="ui button">+ Add track</a>
     <a href="<%= edit_album_url %>" class="ui button">Edit album details</a>
     <form action="<%= album_url(@album) %>" method="POST" class="ui form">
       <%= form_auth %>
@@ -34,6 +34,7 @@
       <th>Title</th>
       <th>Track Type</th>
       <th>Lyrics</th>
+      <th>Update</th>
     </tr>
   </thead>
 
@@ -45,8 +46,23 @@
         <td data-label="Title"><%= track.title %></td>
         <td data-label="Track Type"><%= track.track_type %></td>
         <td data-label="Lyrics"><%= track.lyrics %></td>
+        <td data-label="Update" class="track__edit-row">
+          <form action="<%= track_url(track) %>" method="post" class="track-form">
+            <input type="hidden" name="_method" value="delete">
+            <%= form_auth %>
+
+            <input type="submit" value="Delete" class="ui button tiny">
+            
+          </form>
+
+          <a href="<%= edit_track_url(track.id) %>" class="ui button tiny">Update</a>
+        </td>
       </tr>
     <% end %>
 
   </tbody>
 </table>
+
+
+
+

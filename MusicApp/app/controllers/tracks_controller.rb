@@ -1,6 +1,7 @@
 class TracksController < ApplicationController
   def new
     @track = Track.new
+    @albums = Album.all
     render :new
   end
 
@@ -10,7 +11,7 @@ class TracksController < ApplicationController
     if @track.save
       redirect_to album_url(@track.album_id)
     else
-      flash.now[:errors] += @track.errors.full_messages
+      flash.now[:errors] = ["Invalid track info"]
       render :new
     end
   end
@@ -22,6 +23,8 @@ class TracksController < ApplicationController
 
   def edit
     @track = Track.find_by(id: params[:id])
+    @albums = Album.all
+
     render :edit
   end
 
@@ -36,14 +39,14 @@ class TracksController < ApplicationController
     @track = Track.find_by(id: params[:id])
     @album_id = @track.album_id
     @track.destroy
-    
+
     redirect_to album_url(@album_id)
   end
 
   private
 
   def track_params
-    params.require(:track).permit(:title, :album_id, :lyrics, :track_type, :ord)
+    params.require(:track).permit(:title, :album_id, :lyrics, :track_type, :ord, :id)
   end
   
 end
